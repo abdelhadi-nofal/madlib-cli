@@ -34,51 +34,58 @@ user_input()
 
 
 def read_template():
-    with open('madlib_cli/assets/spam.txt') as file:
-        read = (file.read())
-       # print(read)
-    return read
+    try:
+
+        with open('madlib_cli/assets/spam.txt') as file:
+            read = (file.read().strip())
+        # print(read)
+        return read
+    except FileNotFoundError:
+        return 'FileNotFoundError'    
 
 read =read_template()
 
 
 # print(type(read))
 
-def parse_template():
+def parse_template(read):
     
-    y = re.sub("{[^}]+}", "www", read)
+    y = re.sub("{[^}]+}", "{}", read)
     x = re.findall("{[^}]+}", read)
     x=lst
     
     return x,y
 
-rege=parse_template()
-# rege=([],'')
-
-# print(rege[0])
-# print(rege[1])
+rege=parse_template(read)
 
 
 string =rege[1]
 arraay= rege[0]
 
+# print(string)
 print(type(arraay))
 
+
+
+
+
       
-parse_template()
+parse_template(read)
 
 
 def merge():
-    for i in range (len(arraay)):
-        x = string.replace("www", arraay[i])
 
-    print(x)
+    megedText=string.format(*arraay)
+    print(megedText) 
         
 
     
     
 
 merge()
+
+# if __name__== "__main__":
+#     print(read_template())
 
 # def write_madlib(path, madlib):
 #     with open(path,'w') as filled:
