@@ -5,7 +5,7 @@ def welcome_msg():
     print("Welcome to Madlib Game")
 
 
-# welcome_msg()
+
 
 lst=[]
 def user_input():
@@ -23,20 +23,25 @@ def user_input():
         lst.append(ele)
 
     
-# user_input()
 
 
-def read_template():
+
+def read_template(path):
     try:
-        
-        with open('madlib_cli/assets/spam.txt') as file:
+        # path='assets/spam.txt'
+        with open(path) as file:
             read = (file.read().strip())
         # print(read)
         return read
     except FileNotFoundError:
-        return 'FileNotFoundError'    
+        return 'FileNotFoundError'  
+    except Exception as e:
+        return "Something's Going Wrong : "+ e    
 
-read =read_template()
+    return hhh    
+          
+
+read =read_template('assets/spam.txt')
 
 
 # print(type(read))
@@ -56,25 +61,33 @@ string =rege[1]
 arraay= rege[0]
 
 # print(string)
-print(type(arraay))
+# print(type(arraay))
 
 
 
 
 
       
-# parse_template(read)
+
 
 
 def merge(string,arraay):
 
     megedText=string.format(*arraay)
-    print(megedText) 
+    return megedText 
         
 
     
 
-# merge(string,arraay)
+
+
+
+if __name__ == '__main__':  
+    welcome_msg()
+    user_input()
+    parse_template(read)
+    print(merge(string,arraay))
+
 
 
 
